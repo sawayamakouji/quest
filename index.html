@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DQ Battle</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="monster-area" class="window">
+            <img id="monster-image" src="" alt="モンスター">
+        </div>
+        <div id="status-window" class="window">
+            <!-- ステータスはJSで表示 -->
+        </div>
+        <div id="message-window" class="window">
+            <p></p> <!-- メッセージはここに表示 -->
+        </div>
+        <div id="command-window" class="window">
+            <div class="command-grid">
+                <button id="fight-button">たたかう</button>
+                <button id="run-button">にげる</button>
+                <button id="skill-button">とくぎ</button>
+                <button id="item-button">どうぐ</button>
+                <button id="defense-button">ぼうぎょ</button>
+                <button id="status-button">すてーたす</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="overlay" class="hidden">
+        <div id="overlay-content">
+            <h2 id="overlay-title"></h2>
+            <p id="overlay-message"></p>
+            <button id="overlay-button"></button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

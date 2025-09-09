@@ -1,0 +1,62 @@
+[
+    {
+        "name": "スライム",
+        "hp": 25,
+        "attack": 5,
+        "defense": 2,
+        "agility": 3,
+        "luck": 5,
+        "intelligence": 1,
+        "spirit": 2,
+        "imageUrl": "images/monsters/slime01.png",
+        "animationType": "pulse"
+    },
+    {
+        "name": "ドラキー",
+        "hp": 30,
+        "attack": 8,
+        "defense": 4,
+        "agility": 8,
+        "luck": 3,
+        "intelligence": 3,
+        "spirit": 4,
+        "imageUrl": "images/monsters/draky.png",
+        "animationType": "float"
+    },
+    {
+        "name": "ゴースト",
+        "hp": 28,
+        "attack": 7,
+        "defense": 3,
+        "agility": 5,
+        "luck": 7,
+        "intelligence": 5,
+        "spirit": 5,
+        "imageUrl": "images/monsters/ghost01.png",
+        "animationType": "sway"
+    },
+    {
+        "name": "ミニデビル",
+        "hp": 35,
+        "attack": 10,
+        "defense": 3,
+        "agility": 10,
+        "luck": 6,
+        "intelligence": 7,
+        "spirit": 6,
+        "imageUrl": "images/monsters/minidevil.png",
+        "animationType": "sway"
+    },
+    {
+        "name": "ドラゴン",
+        "hp": 150,
+        "attack": 30,
+        "defense": 15,
+        "agility": 5,
+        "luck": 2,
+        "intelligence": 10,
+        "spirit": 10,
+        "imageUrl": "images/monsters/dragon.png",
+        "animationType": "pulse"
+    }
+]

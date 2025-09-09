@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
+
+body {
+    background-color: #000;
+    color: #fff;
+    font-family: 'DotGothic16', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+#game-container {
+    width: 600px;
+    display: grid;
+    grid-template-areas:
+        "monster monster"
+        "status message"
+        "command command";
+    grid-template-rows: 200px 1fr 150px;
+    grid-template-columns: 1fr 2fr;
+    gap: 10px;
+}
+
+.window {
+    border: 3px solid #fff;
+    padding: 15px;
+    background-color: #000;
+}
+
+#monster-area {
+    grid-area: monster;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#monster-image {
+    height: 128px;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    opacity: 1;
+    transition: opacity 1s;
+}
+
+#status-window {
+    grid-area: status;
+}
+
+#message-window {
+    grid-area: message;
+    line-height: 1.6;
+}
+
+#command-window {
+    grid-area: command;
+}
+
+.command-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px;
+    height: 100%;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-family: 'DotGothic16', sans-serif;
+    font-size: 1.0rem;
+    text-align: center;
+    cursor: pointer;
+    padding: 5px;
+}
+
+button:hover:not(:disabled) {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+button:disabled {
+    color: #888;
+    cursor: default;
+}
+
+/* --- アニメーション --- */
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+}
+
+.shake-animation {
+    animation: shake 0.3s;
+}
+
+@keyframes fadeOut {
+    to { opacity: 0; }
+}
+
+.fade-out-animation {
+    animation: fadeOut 1s forwards;
+}
+
+@keyframes monsterHit {
+    0%, 100% { filter: none; }
+    25% { filter: invert(25%) sepia(100%) hue-rotate(320deg) saturate(7); } /* 赤色 */
+    50% { filter: brightness(3); } /* 白色 */
+    75% { filter: invert(25%) sepia(100%) hue-rotate(320deg) saturate(7); } /* 赤色 */
+}
+
+.monster-hit-animation {
+    animation: monsterHit 0.6s;
+}
+
+/* --- 待機アニメーション --- */
+
+/* 上下移動 */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+.animation-float {
+    animation: float 3s infinite ease-in-out;
+}
+
+/* 拡大縮小 */
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+.animation-pulse {
+    animation: pulse 2.5s infinite ease-in-out;
+}
+
+/* 左右揺れ */
+@keyframes sway {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(5deg); }
+}
+.animation-sway {
+    transform-origin: bottom center;
+    animation: sway 3.5s infinite ease-in-out;
+}
+
+/* --- オーバーレイ --- */
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#overlay-content {
+    background-color: #000;
+    border: 3px solid #fff;
+    padding: 30px;
+    text-align: center;
+    font-family: 'DotGothic16', sans-serif;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#overlay-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+#overlay-message {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+#overlay-button {
+    background-color: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+    font-family: 'DotGothic16', sans-serif;
+    font-size: 1.5rem;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+#overlay-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.hidden {
+    display: none !important;
+}
