@@ -2,6 +2,8 @@ console.log("ゲームスクリプトが読み込まれました。");
 
 // --- グローバル変数 ---
 let monsterMaster = [];
+let autoAttackTimer = null;
+let dotTimer = null;
 const animationTypes = ['animation-float', 'animation-pulse', 'animation-sway'];
 
 const messageTemplates = {
@@ -138,6 +140,28 @@ function setCommandsActive(isActive) {
     itemButton.disabled = !isActive; // 追加
     defenseButton.disabled = !isActive; // 追加
     statusButton.disabled = !isActive;
+
+    if (isActive) {
+        // タイマーを開始
+        autoAttackTimer = setTimeout(async () => {
+            playerAttack();
+        }, 3000); // 3秒後に自動で攻撃
+
+        // 1秒ごとに「。」を表示するタイマーを開始
+        let dotCount = 0;
+        dotTimer = setInterval(() => {
+            if (dotCount < 3) { // 最大3つまで「。」を表示
+                messageP.innerHTML += "。";
+                dotCount++;
+            } else {
+                clearInterval(dotTimer); // 3つ表示したらタイマーを停止
+            }
+        }, 1000); // 1秒ごとに実行
+    } else {
+        // タイマーをクリア
+        clearTimeout(autoAttackTimer);
+        clearInterval(dotTimer); // 「。」表示タイマーもクリア
+    }
 }
 
 // --- 戦闘ロジック ---
@@ -313,6 +337,11 @@ async function showPlayerStats() {
                                 `精神力: ${gameState.player.spirit}`;
 
     showOverlay("ゆうしゃのステータス", detailedStatsString, "閉じる", hideOverlayAndResumeGame);
+}
+
+async function hideOverlayAndResumeGame() {
+    hideOverlay();
+    setCommandsActive(true);
 }
 
 
