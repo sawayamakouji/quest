@@ -1,6 +1,6 @@
 console.log("ゲームスクリプトが読み込まれました。");
 
-// --- グローバル変数 ---
+// --- グローバル変数  ---
 let monsterMaster = [];
 let autoAttackTimer = null;
 let dotTimer = null;
